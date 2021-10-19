@@ -11,3 +11,5 @@
 :triangular_flag_on_post:[Project 1](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%201)
 
 :triangular_flag_on_post:[Project 2](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%202)
+
+:fleur_de_lis: [Course materials](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Course%20materials)
