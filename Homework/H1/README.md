@@ -22,10 +22,10 @@ You must add the code to the ```Github repo``` and continue updating the README 
 - Keep in mindthat magic numbers are not accepted, although you might see them in the lab (as a trade-off for speed).  Remember to be consistent in your style, check  the  style  guide  and  the  provided  style  document  and  use  correct spacing. 
 - Example used in lab which would not yield the maximum grade:  
 
-``` analog-Write(ledPin, potValue / 4)``` or ```voltage = potValue * 5.0 / 1023.0.```
+``` analogWrite(ledPin, potValue / 4)``` or ```voltage = potValue * 5.0 / 1023.0.```
 
 - :thumbsdown: Mistakes observed there
-    1.  ```potValue / 4```is not precise, since the value does not always splitinto 4 perfectly.  Use ```themap()``` function.
+    1.  ```potValue / 4```is not precise, since the value does not always splitinto 4 perfectly.  Use the ```map()``` function.
     2.  ```4``` is a magic number, it should be a constant.
     3.  We calculate the value inside the ```analogWrite``` function.
     4.  Correct  version: 
