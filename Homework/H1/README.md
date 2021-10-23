@@ -6,7 +6,7 @@ Deadline (hard):  ```Wednesday, October 27, 23:59.```
 RBG led (1 minimum), potentiometers (3 minimum), resistors and wires (per logic)
 
 ### :maple_leaf: Technical Task 
-Use a separat potentiometer in controlling each of thecolor of the RGB led (Red,Green and Blue). The control must be donewithdigital electronics(aka you must read the value of the potentiometer with Arduino, and write a mapped value to each of the pins connected to the led.
+Use a separat potentiometer in controlling each of thecolor of the RGB led (Red,Green and Blue). The control must be done with digital electronics(aka you must read the value of the potentiometer with Arduino, and write a mapped value to each of the pins connected to the led.
 
 ### :maple_leaf: Publishing task
 You must add the code to the ```Github repo``` and continue updating the README with at least the following details (but feel free tobe more creative):
