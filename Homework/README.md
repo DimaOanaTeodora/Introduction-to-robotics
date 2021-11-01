@@ -1,1 +1,2 @@
-
+- H1: [RGB led control with 3 potentiometers](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework/H1)
+- H2: [Counting semaphore](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework/H2)
