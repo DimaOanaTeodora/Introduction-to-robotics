@@ -13,3 +13,9 @@
 :triangular_flag_on_post:[Project 2](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%202)
 
 :fleur_de_lis: [Course materials](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Course%20materials)
+
+### Some rules
+![image](https://user-images.githubusercontent.com/61749814/139693761-15171c41-3627-44a2-87ea-3cbc2fcbe9e0.png)
+
+### Starting setup 
+![image](https://user-images.githubusercontent.com/61749814/139693627-ab67d052-8162-43b8-8a6e-0196ff0e0716.png)
