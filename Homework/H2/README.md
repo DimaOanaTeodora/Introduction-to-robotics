@@ -6,6 +6,8 @@ Deadline: ```Wednesday, November 3rd, 23:59.```
 ### [Youtube Demo]()
 
 ### Schema
+![image](https://user-images.githubusercontent.com/61749814/139914040-c4f3a10c-122a-4f36-980e-42997d065d17.png)
+
 
 ## Requirements
 ### Components 
