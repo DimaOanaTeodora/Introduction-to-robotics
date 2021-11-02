@@ -1,55 +1,22 @@
-## Blinking leds for traffic lights
-```
-const int redPin = 4;
-const int greenPin = 2;
-const int yellowPin = 3;
-
-void setup (){
-  
-pinMode(greenPin, OUTPUT);
-pinMode(yellowPin, OUTPUT);
-pinMode(redPin, OUTPUT);
-  
-}
-void loop (){
-
-digitalWrite(redPin, HIGH);
-delay(1000);
-digitalWrite(redPin, LOW);
-delay(1000);
-
-digitalWrite(yellowPin, HIGH);
-delay(1000);
-digitalWrite(yellowPin, LOW);
-delay(1000);
-
-digitalWrite(greenPin, HIGH);
-delay(1000);
-digitalWrite(greenPin, LOW);
-delay(1000);
-
-}
-```
-![image](https://user-images.githubusercontent.com/61749814/139747320-31d30e83-61eb-4833-b363-0d55bed18ad6.png)
-
-## Cars and people
-```
-const int redPinCar = 4;
+```const int redPinCar = 4;
 const int greenPinCar = 2;
 const int yellowPinCar = 3;
 
 const int greenPin = 12;
 const int redPin = 13;
 
-bool stateRedPinCar = HIGH;
+bool stateRedPinCar = LOW;
 bool stateYellowPinCar = LOW;
-bool stateGreenPinCar = LOW;
+bool stateGreenPinCar = HIGH;
 
-bool stateRedPin = LOW;
-bool stateGreenPin = HIGH;
+bool stateRedPin = HIGH;
+bool stateGreenPin = LOW;
 
-int direction = 1;
 int firstTime = 1;
+
+const int pushButton = 7;
+
+bool buttonState = 1;
 
 void setup (){
   
@@ -60,8 +27,79 @@ pinMode(redPinCar, OUTPUT);
 pinMode(redPin, OUTPUT);
 pinMode(greenPin, OUTPUT);
   
+pinMode(pushButton, INPUT_PULLUP);
+  
+Serial.begin(9600);
+  
 }
-void updateState(){
+void state1(){
+  /*green light for cars,
+red light for people, no sounds.
+Duration: indefinite*/
+  
+  	stateRedPinCar = LOW;
+	stateYellowPinCar = LOW;
+	stateGreenPinCar = HIGH;
+
+	stateRedPin = HIGH;
+	stateGreenPin = LOW;
+  
+  	updateStates();
+}
+
+void state2(){
+  /*the light should be yellow for cars
+red for people and no sounds.
+Duration: 3 seconds.*/
+  	stateRedPinCar = LOW;
+	stateYellowPinCar = HIGH;
+	stateGreenPinCar = LOW;
+
+	stateRedPin = HIGH;
+	stateGreenPin = LOW;
+  
+  	updateStates();
+  
+    delay(3000);
+}
+
+void state3(){
+  /*red for cars
+green for people
+a beeping sound from the buzzer at a constant interval.
+Duration: 10 seconds.*/
+  	stateRedPinCar = HIGH;
+	stateYellowPinCar = LOW;
+	stateGreenPinCar = LOW;
+
+	stateRedPin = LOW;
+	stateGreenPin = HIGH;
+  
+  	updateStates();
+  
+  	//beeping constant interval low
+  	delay(10000);
+}
+void state4(){
+  /*red for cars
+blinking green for people
+a beeping sound from the buzzer,
+at a constant interval, 
+faster than the beeping in state 3.*/
+  	stateRedPinCar = HIGH;
+	stateYellowPinCar = LOW;
+	stateGreenPinCar = LOW;
+
+	stateRedPin = LOW;
+	stateGreenPin = HIGH;
+  
+  	updateStates();
+  
+  	//beeping constant interval faster
+  	delay(10000);
+}
+
+void updateStates(){
 digitalWrite(greenPin, stateGreenPin);
 digitalWrite(redPin, stateRedPin);
  
@@ -70,64 +108,35 @@ digitalWrite(redPinCar, stateRedPinCar);
 digitalWrite(yellowPinCar, stateYellowPinCar);
 }
 
-void updatePeople(){
-  	stateGreenPin = ! stateGreenPin;
-	stateRedPin = ! stateRedPin;
-  
-  	digitalWrite(greenPin, stateGreenPin);
-	digitalWrite(redPin, stateRedPin);
- 
-}
-void updateCars(){
-  if (direction == 1){
-    // 1 -> red to green for cars
-    stateRedPinCar = ! stateRedPinCar;
-    digitalWrite(redPinCar, stateRedPinCar);
-    
-    delay(1000);
-	digitalWrite(yellowPinCar, ! stateYellowPinCar);
-    delay(1000);
-    digitalWrite(yellowPinCar, stateYellowPinCar);
-    
-    delay(1000);
-    stateGreenPinCar = ! stateGreenPinCar;
-	digitalWrite(greenPinCar, stateGreenPinCar);
-    
-  }
-  else{
-    // -1 -> green to red for cars
-    stateGreenPinCar = ! stateGreenPinCar;
-	digitalWrite(greenPinCar, stateGreenPinCar);
-    
-    delay(1000);
-	digitalWrite(yellowPinCar, ! stateYellowPinCar);
-    delay(1000);
-    digitalWrite(yellowPinCar, stateYellowPinCar);
-    
-    delay(1000);
-    stateRedPinCar = ! stateRedPinCar;
-    digitalWrite(redPinCar, stateRedPinCar);
-    
-  }
-  direction *= -1;
-  
-}
+int verifyState1(){
+  if (stateRedPinCar == LOW &&
+      stateYellowPinCar == LOW &&
+	stateGreenPinCar == HIGH &&
 
+	stateRedPin == HIGH &&
+      stateGreenPin == LOW ){
+    return 1;
+  }
+  return 0;
+}
 void loop (){
   
-  if (firstTime == 1){
-    
-	updateState();
-    firstTime = 0;
-  }
-delay(4000); 
-  
-updatePeople();
-  
-delay(2000);
+state1();
 
-updateCars();
- 
+buttonState = digitalRead(pushButton);
+  
+Serial.println(buttonState);
+
+
+if (buttonState == 0 && verifyState1() == 1)
+{
+  buttonState = 1;
+  delay(10000);//counting ten second after button press
+  state2();
+  state3();
+  state4();
+}
+
 }
 ```
-![image](https://user-images.githubusercontent.com/61749814/139752860-2bc12637-d3c6-4426-af1c-5b3e6ce49fca.png)
+![image](https://user-images.githubusercontent.com/61749814/139828343-73d4467e-4bca-476d-9dce-9c93aeaa955e.png)
