@@ -1,4 +1,5 @@
-```const int redPinCar = 4;
+```
+const int redPinCar = 4;
 const int greenPinCar = 2;
 const int yellowPinCar = 3;
 
@@ -17,6 +18,14 @@ int firstTime = 1;
 const int pushButton = 7;
 
 bool buttonState = 1;
+
+const int buzzerPin = 8;
+int buzzerTone = 500;
+
+unsigned long previousMillis = 0; 
+unsigned long currentMillis = 0;
+
+const long interval = 10000; //10 seconds
 
 void setup (){
   
@@ -78,7 +87,17 @@ Duration: 10 seconds.*/
   	updateStates();
   
   	//beeping constant interval low
-  	delay(10000);
+  	//delay(10000);
+  
+  	for( int i = 0; i < 10; i++ ){
+     tone(buzzerPin, buzzerTone, 300);
+      
+     delay(500);
+      
+     noTone(buzzerPin);
+      
+     delay(1000);
+   }
 }
 void state4(){
   /*red for cars
@@ -95,8 +114,25 @@ faster than the beeping in state 3.*/
   
   	updateStates();
   
+  	//blinking green light for people
   	//beeping constant interval faster
-  	delay(10000);
+  	
+  	for( int i = 0; i < 3; i++ ){
+      
+      tone(buzzerPin, buzzerTone, 300);
+      digitalWrite(greenPin, LOW);
+      
+      delay(500);
+      
+      noTone(buzzerPin);
+      digitalWrite(greenPin, HIGH);
+      
+      delay(500);
+         
+   }
+  
+  	//beeping constant interval faster
+  	//delay(10000);
 }
 
 void updateStates(){
@@ -119,6 +155,8 @@ int verifyState1(){
   }
   return 0;
 }
+
+
 void loop (){
   
 state1();
@@ -126,17 +164,27 @@ state1();
 buttonState = digitalRead(pushButton);
   
 Serial.println(buttonState);
+  
+if (buttonState == 0 && verifyState1() == 1){
+  
+        currentMillis = millis(); 
 
+        if (currentMillis - previousMillis >= interval)
+        {
+          previousMillis = currentMillis; 
+          buttonState = 1;
+          
+          //delay(10000);//counting ten second after button press
 
-if (buttonState == 0 && verifyState1() == 1)
-{
-  buttonState = 1;
-  delay(10000);//counting ten second after button press
-  state2();
-  state3();
-  state4();
+          state2();
+          //delay(3000);
+          state3();
+          state4();
+
+        }
 }
 
 }
 ```
-![image](https://user-images.githubusercontent.com/61749814/139828343-73d4467e-4bca-476d-9dce-9c93aeaa955e.png)
+![image](https://user-images.githubusercontent.com/61749814/139843171-18dd0d9a-382b-4502-91f8-b99a5c2e483f.png)
+
