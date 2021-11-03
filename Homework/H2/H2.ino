@@ -40,15 +40,15 @@ const int state2Duration = 3000; // 3 seconds
 const int state3Duration = 10000; // 10 seconds
 const int state4Duration = 3000; // 3 seconds
 
-const int buzzerDelay = 500;
-const int buzzrerAndLightDelay = 250;
+const int buzzerDelay1 = 500;
+const int buzzerDelay2 = 250;
 
 int start1 = 0;
 int start2 = 0;
 int start3 = 0;
 int start4 = 0;
 
-int choiceBuzzer = 1;
+int choiceBuzzer = -1;
 int choiceBuzzerAndLight = 1;
 
 void setup (){
@@ -189,11 +189,16 @@ void loop (){
               //beeping constant interval low
               currentMillisBuzzer = millis();
                 
-              if(currentMillisBuzzer - previousMillisBuzzer >= buzzerDelay){
-                  choiceBuzzer *= -1;
+              if(choiceBuzzer == 1 && currentMillisBuzzer - previousMillisBuzzer >= buzzerDelay2){
                   previousMillisBuzzer = currentMillisBuzzer;
+                  choiceBuzzer *= -1;
+              }
+              else if(choiceBuzzer == -1 && currentMillisBuzzer - previousMillisBuzzer >= buzzerDelay1){
+                  previousMillisBuzzer = currentMillisBuzzer;
+                  choiceBuzzer *= -1;
               }
               beepingState3();
+              
           }
           if(currentMillis3 - previousMillis3 >= state3Duration){
               start3 = 1;
@@ -213,7 +218,7 @@ void loop (){
                 */
                 currentMillisBuzzerAndLight = millis();
                   
-                if(currentMillisBuzzerAndLight - previousMillisBuzzerAndLight >= buzzrerAndLightDelay){
+                if(currentMillisBuzzerAndLight - previousMillisBuzzerAndLight >= buzzerDelay2){
                     choiceBuzzerAndLight *= -1;
                     previousMillisBuzzerAndLight = currentMillisBuzzerAndLight;
                 }
