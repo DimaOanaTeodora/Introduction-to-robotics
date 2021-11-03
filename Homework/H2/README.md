@@ -2,8 +2,10 @@
 :red_circle: :yellow_circle: :green_circle: Crosswalk simulator: traffic lights for people and cars :red_circle: :yellow_circle: :green_circle:
 
 Deadline: ```Wednesday, November 3rd, 23:59.```
- 
-### [Youtube Demo]()
+
+### [Youtube Demo](https://youtu.be/6JrIjVJev0U)
+
+![IMG_20211103_140340](https://user-images.githubusercontent.com/61749814/140059215-e01a1b6b-873a-4da6-8e4e-34dda8ba5fd0.jpg)
 
 ### Schema
 ![image](https://user-images.githubusercontent.com/61749814/139914040-c4f3a10c-122a-4f36-980e-42997d065d17.png)
