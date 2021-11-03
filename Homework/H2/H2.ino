@@ -20,8 +20,20 @@ int buzzerTone = 500;
 
 unsigned long previousMillis = 0; 
 unsigned long currentMillis = 0;
+unsigned long previousMillis2 = 0; 
+unsigned long currentMillis2 = 0;
+unsigned long previousMillis3 = 0; 
+unsigned long currentMillis3 = 0;
+unsigned long previousMillis4 = 0; 
+unsigned long currentMillis4 = 0;
 
-const long interval = 10000; //10 seconds
+const long interval = 1000; //1 second
+
+int start1 = 0;
+int start2 = 0;
+int start3 = 0;
+int start4 = 0;
+int start = 0;
 
 void setup (){
   
@@ -44,6 +56,7 @@ void state1(){
    * red light for people, no sounds
    * duration: indefinite
    */
+ 
   digitalWrite(greenPin, LOW);
   digitalWrite(redPin, HIGH);
  
@@ -59,18 +72,17 @@ void state2(){
    * red for people and no sounds 
    * duration: 3 seconds.
    */
-   
+ 
    stateGreenPinCar = LOW;
    digitalWrite(greenPinCar, stateGreenPinCar);
   
    stateYellowPinCar = HIGH;
    digitalWrite(yellowPinCar, stateYellowPinCar);
    
-   delay(3000);
 }
 void beepingState3(){
-      
-     tone(buzzerPin, buzzerTone, 300);
+     
+     tone(buzzerPin, buzzerTone, 700);
       
      delay(300);
       
@@ -85,6 +97,7 @@ void state3(){
    * a beeping sound from the buzzer at a constant interval
    * duration: 10 seconds
    */
+
    stateGreenPin = HIGH;
    stateRedPin = LOW;
    digitalWrite(greenPin, stateGreenPin);
@@ -95,18 +108,12 @@ void state3(){
    digitalWrite(redPinCar, stateRedPinCar);
    digitalWrite(yellowPinCar, stateYellowPinCar);
    
-    //beeping constant interval low
-    //delay(10000);
-  
-    for( int i = 0; i < 10; i++ ){
-     beepingState3();
-   }
 }
 void blinkingAndBeepingState4(){
     //blinking green light for people
     //beeping constant interval faster
     
-      tone(buzzerPin, buzzerTone, 300);
+      tone(buzzerPin, buzzerTone, 700);
       digitalWrite(greenPin, LOW);
       
       delay(500);
@@ -116,23 +123,6 @@ void blinkingAndBeepingState4(){
       
       delay(500);
 }
-void state4(){
-  /*
-   * red for cars
-   * blinking green for people
-   * a beeping sound from the buzzer at a constant interval, faster than the beeping in state 3.
-   */
-   
-    for( int i = 0; i < 3; i++ ){
-      
-      blinkingAndBeepingState4();
-         
-   }
-  
-    //beeping constant interval faster
-    //delay(10000);
-}
-
 
 int verifyState1(){
   
@@ -142,32 +132,83 @@ int verifyState1(){
   return 0;
 }
 
+int currentButtonState = 1;
+
+void pushButton(){
+  buttonState = digitalRead(pushButtonPin);
+  
+  if(currentButtonState == 1 && buttonState == 0){
+    previousMillis = millis();
+    currentButtonState = 0;
+    start1 = 0;
+    start2 = 0;
+    start3 = 0;
+    start4 = 0;
+  }
+}
+
 void loop (){
   
-  Serial.println(buttonState);
-
-  if (buttonState == 0 && verifyState1() == 1){
-    
-          currentMillis = millis(); 
   
-          if (currentMillis - previousMillis >= interval){
-            
-            buttonState = 1;
-            
+  pushButton();
+  Serial.println(currentButtonState);
+  
+  if(currentButtonState == 0){
+          currentMillis = millis(); 
+          
+          if (verifyState1() == 1 && start1 == 0 && currentMillis - previousMillis >= 10 * interval){
+            start1 = 1;
+        
             state2();
-            //delay(3000);
-            state3();
-            state4();
+            previousMillis2 = millis();
             
-            state1();
+          }else if (start1 == 1 && start2 == 0){
+            currentMillis2 = millis();
+             
+            if (currentMillis2 - previousMillis2 >= 3 * interval){
+              
+              start2 = 1;
+              state3();
+              
+              previousMillis3 = millis();
+            }
+           
           }
-  }
-  else{
-      buttonState = digitalRead(pushButtonPin);
-      
-      if (buttonState == 0){  
-        previousMillis = millis();
-      }
+          else if (start1 == 1 && start2 == 1 && start3 == 0){
+           
+            currentMillis3 = millis();
+             
+            if (currentMillis3 - previousMillis3 <= 10 * interval){
+              //beeping constant interval low
+              beepingState3();
+            }
+            
+             if (currentMillis3 - previousMillis3 > 10 * interval){
+             
+              start3 = 1;
+              
+              previousMillis4 = millis();
+            }
+          }
+          else if (start1 == 1 && start2 == 1 && start3 == 1 && start4 == 0){
+              currentMillis4 = millis();
+               
+              if (currentMillis4 - previousMillis4 <= 5 * interval){
+                /*
+                 * red for cars
+                 * blinking green for people
+                 * a beeping sound from the buzzer at a constant interval, faster than the beeping in state 3.
+                 */
+                 blinkingAndBeepingState4();
+              }
+              
+               if (currentMillis4 - previousMillis4 > 5 * interval){
+                  start4 = 1;
+                  state1();
+                  currentButtonState = 1;
+              }
+
+         }          
   }
   
 }
