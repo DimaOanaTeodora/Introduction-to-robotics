@@ -38,7 +38,7 @@ unsigned long currentMillisBuzzerAndLight = 0;
 const int beginState2 = 10000; // begin after 10 seconds
 const int state2Duration = 3000; // 3 seconds
 const int state3Duration = 10000; // 10 seconds
-const int state4Duration = 3000; // 3 seconds
+const int state4Duration = 5000; // 5 seconds
 
 const int buzzerDelay1 = 500;
 const int buzzerDelay2 = 250;
@@ -70,13 +70,24 @@ void state1(){
    * red light for people, no sounds
    * duration: indefinite
    */
+
+   //restting for infinite loop
+   choiceBuzzer = -1;
+   choiceBuzzerAndLight = 1;
+
+   stateRedPinCar = LOW; 
+   stateYellowPinCar = LOW;
+   stateGreenPinCar = HIGH; 
    
-  digitalWrite(greenPin, LOW);
-  digitalWrite(redPin, HIGH);
+   stateRedPin = HIGH;
+   stateGreenPin = LOW;
+   
+   digitalWrite(greenPin, stateGreenPin);
+   digitalWrite(redPin, stateRedPin);
  
-  digitalWrite(greenPinCar, HIGH);
-  digitalWrite(redPinCar, LOW);
-  digitalWrite(yellowPinCar, LOW);
+   digitalWrite(greenPinCar, stateGreenPinCar);
+   digitalWrite(redPinCar, stateRedPinCar);
+   digitalWrite(yellowPinCar, stateYellowPinCar);
 }
 
 void state2(){
