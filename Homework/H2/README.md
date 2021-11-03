@@ -37,6 +37,7 @@ Building the traffic lights for a crosswalk. See the states it needs to go throu
   - red for cars
   - blinking green for people 
   - a beeping sound from the buzzer, at a constant interval, faster than the beeping in state 3.
+  - Duration: 5 seconds.
   
 :warning: Pressing the button in any state other than ```state 1``` shouldn't yield any actions.
 
