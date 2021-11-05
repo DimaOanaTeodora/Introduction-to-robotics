@@ -1,1 +1,3 @@
-
+- light every part/pin of the 7-segment display: [code here](https://github.com/DimaOanaTeodora/IntroductionToRobotics/blob/main/Labs/L4/L4_1.ino)
+- cycle through all the digits: [code here](https://github.com/DimaOanaTeodora/IntroductionToRobotics/blob/main/Labs/L4/L4_2.ino)
+- JoyStick counter +/- for 7-segment display [code here](https://github.com/DimaOanaTeodora/IntroductionToRobotics/blob/main/Labs/L4/L4_3.ino)
