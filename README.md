@@ -6,7 +6,7 @@
 
 :large_blue_diamond: [Lab exercices](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Labs)
 
-:diamond_shape_with_a_dot_inside:	 [Homewrok directory](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework)
+:diamond_shape_with_a_dot_inside:	 [Homework directory](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework)
 
 :triangular_flag_on_post:[Project 1](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%201)
 
