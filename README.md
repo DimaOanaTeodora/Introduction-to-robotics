@@ -7,6 +7,8 @@
 
 :large_blue_diamond: [Lab exercices](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Labs)
 
+:fleur_de_lis: [Course materials](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Course%20materials)
+
 # Homework
 :diamond_shape_with_a_dot_inside:	[RGB led control with 3 potentiometers](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework/H1)
 
@@ -16,8 +18,6 @@
 :triangular_flag_on_post:[Project 1](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%201)
 
 :triangular_flag_on_post:[Project 2](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%202)
-
-:fleur_de_lis: [Course materials](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Course%20materials)
 
 ### Some rules
 ![image](https://user-images.githubusercontent.com/61749814/139693761-15171c41-3627-44a2-87ea-3cbc2fcbe9e0.png)
