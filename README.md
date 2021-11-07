@@ -6,7 +6,9 @@
 
 :large_blue_diamond: [Lab exercices](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Labs)
 
-:diamond_shape_with_a_dot_inside:	 [Homework directory](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework)
+:diamond_shape_with_a_dot_inside:	[RGB led control with 3 potentiometers](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework/H1)
+
+:diamond_shape_with_a_dot_inside:	[Crosswalk simulator: traffic lights for people and cars](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework/H2)
 
 :triangular_flag_on_post:[Project 1](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%201)
 
