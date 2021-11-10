@@ -14,6 +14,8 @@
 
 :diamond_shape_with_a_dot_inside:	[Crosswalk simulator: traffic lights for people and cars](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework/H2)
 
+:diamond_shape_with_a_dot_inside:	[Ghost detector (EMF - electromagnetic field - detector)](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework/H3)
+
 # Projects
 :triangular_flag_on_post:[Project 1](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%201)
 
