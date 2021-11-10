@@ -3,9 +3,9 @@ Ghost detector (EMF - electromagnetic field - detector)
 
 Deadline: ```Wednesday, November 10th, 23:59```
 
-# [YouTube demo]()
+# [YouTube demo](https://youtu.be/i1BTOc6iCHc)
 
-# Schema
+![IMG_20211110_111207](https://user-images.githubusercontent.com/61749814/141088331-aa54df80-e5c3-470c-a291-add4a71bebf8.jpg)
 
 # Requirements
 
