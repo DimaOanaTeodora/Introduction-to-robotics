@@ -1,12 +1,14 @@
 # Homework #4 :zero:. :zero:. :zero:. :zero:.
 Deadline: ```Wednesday, November 17th, 23:59.```
 
-# [YouTube demo]()
+# [YouTube demo](https://youtu.be/el1PX_TBE6Q)
+
 # States
 ```
  * STATE 1: blinking DP; moving on the OY axis the DP => changeDecimalPointPosition() method
  * STATE 2: fixed DP; moving on the OX axis change the value of the digit; =>  changeDigitValue() method
 ```
+![IMG_20211116_135021](https://user-images.githubusercontent.com/61749814/141983203-4c29944f-28a1-4add-8c1b-5e42c87b2c06.jpg)
 
 # Requirements 
 The current homework involves using a ```joystick``` in setting the values on each digit of ```a 4-digit 7-segment display``` connected to a 
