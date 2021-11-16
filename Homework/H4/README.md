@@ -2,7 +2,11 @@
 Deadline: ```Wednesday, November 17th, 23:59.```
 
 # [YouTube demo]()
-# Schema 
+# States
+```
+ * STATE 1: blinking DP; moving on the OY axis the DP => changeDecimalPointPosition() method
+ * STATE 2: fixed DP; moving on the OX axis change the value of the digit; =>  changeDigitValue() method
+```
 
 # Requirements 
 The current homework involves using a ```joystick``` in setting the values on each digit of ```a 4-digit 7-segment display``` connected to a 
@@ -20,7 +24,7 @@ The current homework involves using a ```joystick``` in setting the values on ea
 ### Task
 
 You can use ```a joystick axis``` to cycle through the 4 digits; using the other axis does nothing. 
-A blinking decimal point shows the current digit position. When pressing the button (:warning: use interrupt for maximum points), you lock in on the 
+A blinking decimal point shows the current digit position. When pressing the button (:warning: use ```interrupt``` for maximum points :warning:), you lock in on the 
 selected digit and enter the second state. In this state, the decimal point stays always on, no longer
 blinking and you can no longer use the axis to cycle through the 4 digits.
 Instead, using the other axis, you can increment on decrement the number
