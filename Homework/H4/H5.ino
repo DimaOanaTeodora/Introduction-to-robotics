@@ -24,7 +24,6 @@ byte segmentDisplayValues[segmentCount] = {0, 0, 0, 0}; //for eeprom storage
  * STATE 2: fixed DP; moving on the OX axis change the value of the digit; =>  changeDigitValue
 */
 int state = 1; // values: 1 or 2   
-const int stateChangeDelay = 1000;
 
 //decimal point (DP)
 int decimalPointState = HIGH;
@@ -54,13 +53,14 @@ byte digitArray[10] = {
 };
 
 // Timing onstants
-unsigned long timeSnapshot = 0;
+unsigned long startTimeForBlink = 0;
 unsigned long lastStateChange = 0;
-const int multiplexingDelay = 5; // 5 seconds
+const int multiplexingDelay = 5; 
+const int stateChangeDelay = 700; 
 
 void setup () {
   pinMode(joySwitchPin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(joySwitchPin), switchStateISR, FALLING); // switch state when you push the button
+  attachInterrupt(digitalPinToInterrupt(joySwitchPin), switchStates, FALLING); // switch state when you push the button
   
   pinMode(joyYPin, INPUT);
   pinMode(joyXPin, INPUT);
@@ -122,19 +122,21 @@ void changeDecimalPointPositionInitilization() {
     saveToMemory(indexSegmentDisplay);// save the new value in eeprom
   }
   state = 1;
-  timeSnapshot = millis();
   joyMoved = false;
   decimalPointState = HIGH;
+
+  startTimeForBlink = millis();
 }
 
-void changeDecimalPointPosition() {
-  unsigned long timeNow = millis();
-  // alternate blinking dot state
-  if (timeNow - timeSnapshot > decimalPointBlinkDelay) {
-    decimalPointState = !decimalPointState;
-    timeSnapshot = timeNow;
-  }
+void blinkDecimalPoint(){
+  unsigned long current = millis();
   
+  if (current - startTimeForBlink > decimalPointBlinkDelay) {
+    decimalPointState = !decimalPointState;
+    startTimeForBlink = current;
+  }
+}
+void changeDecimalPointPosition() {
   int joyY = analogRead(joyYPin);
   
   if(joyY > maxTreshold && joyMoved == false) {
@@ -155,6 +157,8 @@ void changeDecimalPointPosition() {
   } else if(indexSegmentDisplay == 255) {
     indexSegmentDisplay = segmentCount - 1;
   }
+
+  blinkDecimalPoint();
 }
 
 void changeDigitValueInitilization() {
@@ -185,13 +189,13 @@ void changeDigitValue() {
   }
 }
 
-void switchStateISR() {
-  unsigned long timeNow = millis();
-  // don't switch states too often
-  if(timeNow - lastStateChange < stateChangeDelay) {
+void switchStates() {
+  unsigned long current = millis();
+  
+  if(current - lastStateChange < stateChangeDelay) {
     return;
   }
-  lastStateChange = timeNow;
+  lastStateChange = current;
 
   if(state == 1){
     changeDigitValueInitilization();
