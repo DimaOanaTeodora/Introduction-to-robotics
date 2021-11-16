@@ -125,7 +125,7 @@ void changeDecimalPointPositionInitilization() {
   joyMoved = false;
   decimalPointState = HIGH;
 
-  startTimeForBlink = millis();
+  startTimeForBlink = millis(); //I can't use delay :( it behave very strange
 }
 
 void blinkDecimalPoint(){
