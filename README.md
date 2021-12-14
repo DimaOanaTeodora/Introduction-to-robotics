@@ -19,7 +19,7 @@
 :diamond_shape_with_a_dot_inside: [:zero:. :zero:. :zero:. :zero:.](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Homework/H4)
 
 # Projects
-:triangular_flag_on_post:[Snake game - 8x8 matrix + joystick controller + LCD menu](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Snake%20game)
+:triangular_flag_on_post:[Snake game - 8x8 matrix + joystick controller + LCD menu](https://github.com/DimaOanaTeodora/Snake-game)
 
 :triangular_flag_on_post:[Project 2](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%202)
 
