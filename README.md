@@ -21,8 +21,6 @@
 # Projects
 :triangular_flag_on_post:[Snake game - 8x8 matrix + joystick controller + LCD menu](https://github.com/DimaOanaTeodora/Snake-game)
 
-:triangular_flag_on_post:[Project 2](https://github.com/DimaOanaTeodora/IntroductionToRobotics/tree/main/Project%202)
-
 ### Some rules
 ![image](https://user-images.githubusercontent.com/61749814/139693761-15171c41-3627-44a2-87ea-3cbc2fcbe9e0.png)
 
